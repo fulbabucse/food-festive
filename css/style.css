@@ -98,3 +98,15 @@ body {
 .food-card {
   height: 400px;
 }
+
+.cart {
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
+.cart-number {
+  font-size: 18px;
+  color: red;
+  font-weight: 600;
+}

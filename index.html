@@ -73,6 +73,12 @@
                   >Contact</a
                 >
               </li>
+              <li class="nav-item">
+                <button class="cart">
+                  <i class="fa-sharp fa-solid fa-cart-plus cart-number"></i>
+                  <sup class="cart-number" id="cart-number">0</sup>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -97,6 +103,7 @@
           />
           <input
             id="search-button"
+            onclick="searchButton()"
             class="search-button"
             type="button"
             value="Search"

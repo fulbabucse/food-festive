@@ -28,6 +28,7 @@ const dsiplayFood = (foods) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
   foods.forEach((food) => {
+    // console.log(food);
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
     foodDetails.innerHTML = `
@@ -42,12 +43,63 @@ const dsiplayFood = (foods) => {
         </div>
         <div class="card-footer d-flex justify-content-between">
             <button class="btn btn-primary">Details</button>
-            <button class="btn btn-primary">Cart</button>
+            <button class="btn btn-primary" onclick="cartFoods(${
+              food.idMeal
+            })">Cart</button>
         </div>
      </div>
     `;
     seeResult.appendChild(foodDetails);
   });
+};
+
+const searchFoodApi = (mealName) => {
+  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displaySearchResult(data.meals));
+};
+
+const displaySearchResult = (meals) => {
+  const seeResult = document.getElementById("see-result");
+  seeResult.innerHTML = "";
+  meals.forEach((meal) => {
+    // console.log(meal);
+    const foodDetails = document.createElement("div");
+    foodDetails.classList.add("col");
+    foodDetails.innerHTML = `
+    <div class="card food-card">
+        <img
+            src="${meal.strMealThumb}"
+            class="drink-card-img"
+            alt="..."
+        />
+        <div class="card-body">
+            <h5 class="card-title">${meal.strMeal.slice(0, 50)}</h5>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button class="btn btn-primary">Details</button>
+            <button class="btn btn-primary" onclick="cartFoods(${
+              meal.idMeal
+            })">Cart</button>
+        </div>
+     </div>
+    `;
+    seeResult.appendChild(foodDetails);
+  });
+};
+
+const searchButton = () => {
+  const searchField = document.getElementById("search-field").value;
+  searchFoodApi(searchField);
+};
+
+const cartFoods = (id) => {
+  const cartNumberEle = document.getElementById("cart-number");
+  const cartNumberStr = cartNumberEle.innerText;
+  const CartNumberInt = parseInt(cartNumberStr);
+  const cartNumber = CartNumberInt + 1;
+  cartNumberEle.innerText = cartNumber;
 };
 
 productCategory("Beef");
