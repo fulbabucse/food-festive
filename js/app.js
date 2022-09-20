@@ -97,7 +97,13 @@ const searchButton = () => {
   searchFoodApi(searchField);
 };
 
-const cartFoods = () => {
+const cartFoods = (foodId) => {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayFoodDetails(data.meals));
+
   const cartNumberEle = document.getElementById("cart-number");
   const cartNumberStr = cartNumberEle.innerText;
   const CartNumberInt = parseInt(cartNumberStr);
@@ -105,25 +111,16 @@ const cartFoods = () => {
   cartNumberEle.innerText = cartNumber;
 };
 
-const foodDetails = (foodId) => {
-  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
-
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayFoodDetails(data.meals));
-
-  cartFoods();
-};
-
 const displayFoodDetails = (foodDetails) => {
-  console.log(foodDetails);
   const foodCartList = document.getElementById("food-cart-list");
   const tr = document.createElement("tr");
   tr.innerHTML = `
-    <th scope="row"><img src="${foodDetails.strMealThumb}" alt="" srcset="" /></th>
-    <td>${foodDetails.strMeal}</td>
-    <td>${foodDetails.strCategory}</td>
-    <td>5</td>
+    <th scope="row"><img src="${
+      foodDetails[0].strMealThumb
+    }" class="cart-image" alt="" srcset="" /></th>
+    <td class="text-center">${foodDetails[0].strMeal.slice(0, 50)}</td>
+    <td class="text-center">${foodDetails[0].strCategory}</td>
+    <td class="text-center">1</td>
   `;
 
   foodCartList.appendChild(tr);

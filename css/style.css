@@ -110,3 +110,8 @@ body {
   color: red;
   font-weight: 600;
 }
+
+.cart-image {
+  width: 40px;
+  border-radius: 5px;
+}
