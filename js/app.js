@@ -28,7 +28,6 @@ const dsiplayFood = (foods) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
   foods.forEach((food) => {
-    // console.log(food);
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
     foodDetails.innerHTML = `
@@ -44,7 +43,8 @@ const dsiplayFood = (foods) => {
         <div class="card-footer d-flex justify-content-between">
             <button class="btn btn-primary" onclick="foodDetails(${
               food.idMeal
-            })">Details</button>
+            })" data-bs-toggle="modal"
+            data-bs-target="#detailModal">Details</button>
             <button class="btn btn-primary" onclick="cartFoods(${
               food.idMeal
             })">Cart</button>
@@ -66,7 +66,6 @@ const displaySearchResult = (meals) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
   meals.forEach((meal) => {
-    console.log(meal);
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
     foodDetails.innerHTML = `
@@ -82,7 +81,8 @@ const displaySearchResult = (meals) => {
         <div class="card-footer d-flex justify-content-between">
             <button class="btn btn-primary" onclick="foodDetails(${
               meal.idMeal
-            })">Details</button>
+            })" data-bs-toggle="modal"
+            data-bs-target="#detailModal">Details</button>
             <button class="btn btn-primary" onclick="cartFoods(${
               meal.idMeal
             })">Cart</button>
@@ -104,7 +104,7 @@ const cartFoods = (foodId) => {
 
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayFoodDetails(data.meals));
+    .then((data) => displayFoodCart(data.meals));
 
   const cartNumberEle = document.getElementById("cart-number");
   const cartNumberStr = cartNumberEle.innerText;
@@ -113,19 +113,49 @@ const cartFoods = (foodId) => {
   cartNumberEle.innerText = cartNumber;
 };
 
-const displayFoodDetails = (foodDetails) => {
+const displayFoodCart = (foodCart) => {
   const foodCartList = document.getElementById("food-cart-list");
   const tr = document.createElement("tr");
+
   tr.innerHTML = `
     <th scope="row"><img src="${
-      foodDetails[0].strMealThumb
+      foodCart[0].strMealThumb
     }" class="cart-image" alt="" srcset="" /></th>
-    <td class="text-center">${foodDetails[0].strMeal.slice(0, 50)}</td>
-    <td class="text-center">${foodDetails[0].strCategory}</td>
+    <td class="text-center">${foodCart[0].strMeal.slice(0, 50)}</td>
+    <td class="text-center">${foodCart[0].strCategory}</td>
     <td class="text-center">1</td>
   `;
 
   foodCartList.appendChild(tr);
+};
+
+const foodDetails = (foodId) => {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayFoodDetails(data.meals));
+};
+
+const displayFoodDetails = (foodDetails) => {
+  document.getElementById("detailsModal").innerText =
+    foodDetails[0].strMeal.slice(0, 45);
+  const foodDetail = document.getElementById("foodDetails");
+  foodDetail.innerHTML = "";
+  const div = document.createElement("div");
+  div.innerHTML = `
+    <img src="${
+      foodDetails[0].strMealThumb
+    }" class="food-details" alt="" srcset="" />
+    <p class="mt-2"><strong>Instruction: </strong>${foodDetails[0].strInstructions.slice(
+      0,
+      200
+    )}</p>
+    <a href="${
+      foodDetails[0].strYoutube
+    }" class="text-decoration-none" target="_blank">Youtube Recepe link</a>
+  `;
+  foodDetail.appendChild(div);
 };
 
 productCategory("Beef");

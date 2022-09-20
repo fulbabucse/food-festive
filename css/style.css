@@ -107,11 +107,33 @@ body {
 
 .cart-number {
   font-size: 18px;
-  color: red;
+  color: #ff0050;
   font-weight: 600;
 }
 
 .cart-image {
   width: 40px;
   border-radius: 5px;
+}
+
+.food-details {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.footer-bg {
+  background-color: #353537;
+}
+
+.footer-bg span {
+  color: #fff;
+}
+
+.footer-bg span a {
+  padding: 0;
+  color: #ff0050;
+}
+
+.footer-bg span a:hover {
+  border-bottom: 1px solid #ff0050;
 }
