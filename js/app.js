@@ -42,7 +42,9 @@ const dsiplayFood = (foods) => {
             <h5 class="card-title">${food.strMeal.slice(0, 50)}</h5>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <button class="btn btn-primary">Details</button>
+            <button class="btn btn-primary" onclick="foodDetails(${
+              food.idMeal
+            })">Details</button>
             <button class="btn btn-primary" onclick="cartFoods(${
               food.idMeal
             })">Cart</button>
@@ -64,7 +66,7 @@ const displaySearchResult = (meals) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
   meals.forEach((meal) => {
-    // console.log(meal);
+    console.log(meal);
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
     foodDetails.innerHTML = `
@@ -78,10 +80,11 @@ const displaySearchResult = (meals) => {
             <h5 class="card-title">${meal.strMeal.slice(0, 50)}</h5>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <button class="btn btn-primary">Details</button>
-            <button class="btn btn-primary" onclick="cartFoods(${
+            <button class="btn btn-primary" onclick="foodDetails(${
               meal.idMeal
-            })">Cart</button>
+            })">Details</button>
+            <button class="btn btn-primary" onclick="cartFoods()">Cart</button>
+            
         </div>
      </div>
     `;
@@ -94,12 +97,36 @@ const searchButton = () => {
   searchFoodApi(searchField);
 };
 
-const cartFoods = (id) => {
+const cartFoods = () => {
   const cartNumberEle = document.getElementById("cart-number");
   const cartNumberStr = cartNumberEle.innerText;
   const CartNumberInt = parseInt(cartNumberStr);
   const cartNumber = CartNumberInt + 1;
   cartNumberEle.innerText = cartNumber;
+};
+
+const foodDetails = (foodId) => {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayFoodDetails(data.meals));
+
+  cartFoods();
+};
+
+const displayFoodDetails = (foodDetails) => {
+  console.log(foodDetails);
+  const foodCartList = document.getElementById("food-cart-list");
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <th scope="row"><img src="${foodDetails.strMealThumb}" alt="" srcset="" /></th>
+    <td>${foodDetails.strMeal}</td>
+    <td>${foodDetails.strCategory}</td>
+    <td>5</td>
+  `;
+
+  foodCartList.appendChild(tr);
 };
 
 productCategory("Beef");

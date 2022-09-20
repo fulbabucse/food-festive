@@ -74,7 +74,11 @@
                 >
               </li>
               <li class="nav-item">
-                <button class="cart">
+                <button
+                  class="cart"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="fa-sharp fa-solid fa-cart-plus cart-number"></i>
                   <sup class="cart-number" id="cart-number">0</sup>
                 </button>
@@ -121,6 +125,63 @@
                 class="row row-cols-1 row-cols-md-3 g-4"
                 id="see-result"
               ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <!-- Button trigger modal -->
+        <!-- <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Launch demo modal
+        </button> -->
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+            id="modal-content"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart Food</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Images</th>
+                      <th scope="col">Food Name</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody id="food-cart-list">
+                    <!-- <tr>
+                      <th scope="row"><img src="" alt="" srcset="" /></th>
+                      <td>Beef and Mustard Pie</td>
+                      <td>5</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
