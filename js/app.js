@@ -18,6 +18,7 @@ const displayData = (drinks) => {
 };
 
 const productCategory = (category_name) => {
+  spinner(true);
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category_name}`;
   fetch(url)
     .then((res) => res.json())
@@ -27,6 +28,7 @@ const productCategory = (category_name) => {
 const dsiplayFood = (foods) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
+
   foods.forEach((food) => {
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
@@ -53,6 +55,7 @@ const dsiplayFood = (foods) => {
     `;
     seeResult.appendChild(foodDetails);
   });
+  spinner(false);
 };
 
 const searchFoodApi = (mealName) => {
@@ -65,6 +68,16 @@ const searchFoodApi = (mealName) => {
 const displaySearchResult = (meals) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
+  // const foundMessages = document.getElementById("found-messages");
+
+  // console.log(meals);
+
+  // if (meals.length === 0) {
+  //   foundMessages.classList.remove("d-none");
+  // } else {
+  //   foundMessages.classList.add("d-none");
+  // }
+
   meals.forEach((meal) => {
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
@@ -96,6 +109,7 @@ const displaySearchResult = (meals) => {
 
 const searchButton = () => {
   const searchField = document.getElementById("search-field").value;
+
   searchFoodApi(searchField);
 };
 
@@ -156,6 +170,16 @@ const displayFoodDetails = (foodDetails) => {
     }" class="text-decoration-none" target="_blank">Youtube Recipe link</a>
   `;
   foodDetail.appendChild(div);
+};
+
+const spinner = (isLoading) => {
+  const loader = document.getElementById("spinner");
+
+  if (isLoading) {
+    loader.classList.remove("d-none");
+  } else {
+    loader.classList.add("d-none");
+  }
 };
 
 productCategory("Beef");
