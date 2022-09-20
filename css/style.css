@@ -133,6 +133,32 @@ body {
   border-bottom: 1px solid #ff0050;
 }
 
+.cart-btn {
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  background-color: #f57224;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+.cart-btn:hover {
+  background-color: #d0611e;
+}
+
+.details-btn {
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  background-color: #2abbe8;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+.details-btn:hover {
+  background-color: #26abd4;
+}
+
 @media only screen and (max-width: 576px) {
   .search-field {
     width: 100%;
@@ -141,7 +167,7 @@ body {
     width: 100%;
   }
   .food-card {
-    height: 440px;
+    height: 540px;
   }
   #category {
     margin-bottom: 30px;

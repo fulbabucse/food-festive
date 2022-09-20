@@ -38,14 +38,14 @@ const dsiplayFood = (foods) => {
             alt="..."
         />
         <div class="card-body">
-            <h5 class="card-title">${food.strMeal.slice(0, 50)}</h5>
+            <h5 class="card-title">${food.strMeal.slice(0, 40)}</h5>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <button class="btn btn-primary" onclick="foodDetails(${
+            <button class="details-btn" onclick="foodDetails(${
               food.idMeal
             })" data-bs-toggle="modal"
             data-bs-target="#detailModal">Details</button>
-            <button class="btn btn-primary" onclick="cartFoods(${
+            <button class="cart-btn" onclick="cartFoods(${
               food.idMeal
             })">Cart</button>
         </div>
@@ -76,14 +76,14 @@ const displaySearchResult = (meals) => {
             alt="..."
         />
         <div class="card-body">
-            <h5 class="card-title">${meal.strMeal.slice(0, 50)}</h5>
+            <h5 class="card-title">${meal.strMeal.slice(0, 40)}</h5>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <button class="btn btn-primary" onclick="foodDetails(${
+            <button class="details-btn" onclick="foodDetails(${
               meal.idMeal
             })" data-bs-toggle="modal"
             data-bs-target="#detailModal">Details</button>
-            <button class="btn btn-primary" onclick="cartFoods(${
+            <button class="cart-btn" onclick="cartFoods(${
               meal.idMeal
             })">Cart</button>
             
@@ -153,7 +153,7 @@ const displayFoodDetails = (foodDetails) => {
     )}</p>
     <a href="${
       foodDetails[0].strYoutube
-    }" class="text-decoration-none" target="_blank">Youtube Recepe link</a>
+    }" class="text-decoration-none" target="_blank">Youtube Recipe link</a>
   `;
   foodDetail.appendChild(div);
 };
