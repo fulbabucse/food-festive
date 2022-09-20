@@ -83,7 +83,9 @@ const displaySearchResult = (meals) => {
             <button class="btn btn-primary" onclick="foodDetails(${
               meal.idMeal
             })">Details</button>
-            <button class="btn btn-primary" onclick="cartFoods()">Cart</button>
+            <button class="btn btn-primary" onclick="cartFoods(${
+              meal.idMeal
+            })">Cart</button>
             
         </div>
      </div>
