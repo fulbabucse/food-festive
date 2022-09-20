@@ -16,11 +16,6 @@ body {
   color: #ff0066;
 }
 
-.intro-sub-heading:hover {
-  color: var(--primary-color);
-  border-bottom: 1px solid #ff0050;
-}
-
 .text-color {
   color: #fff;
 }
@@ -34,7 +29,7 @@ body {
   padding: 5px 20px;
   font-size: 18px;
   font-weight: 400;
-  width: 30%;
+  width: 50%;
   transition: 0.3s ease-in-out;
   border-radius: 0;
   border-bottom-left-radius: 20px;
@@ -42,7 +37,7 @@ body {
 }
 
 .search-field:focus {
-  width: 50%;
+  width: 70%;
   color: orange;
   border: 1px solid orange !important;
   box-shadow: none;
@@ -136,4 +131,33 @@ body {
 
 .footer-bg span a:hover {
   border-bottom: 1px solid #ff0050;
+}
+
+@media only screen and (max-width: 576px) {
+  .search-field {
+    width: 100%;
+  }
+  .search-field:focus {
+    width: 100%;
+  }
+  .food-card {
+    height: 440px;
+  }
+  #category {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 1024px) {
+  .search-field {
+    width: 60%;
+  }
+
+  .search-field:focus {
+    width: 80%;
+  }
+
+  #category {
+    margin-bottom: 30px;
+  }
 }
