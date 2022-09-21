@@ -4,8 +4,8 @@ body {
 }
 
 #pre-loader {
-  background: white url(../image/pre-loader.gif) no-repeat center;
-  background-size: 40%;
+  background: white url(../images/preLoader.gif) no-repeat center;
+  background-size: 10%;
   height: 100vh;
   width: 100%;
   z-index: 100;
