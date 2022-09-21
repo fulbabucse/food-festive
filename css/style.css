@@ -168,6 +168,18 @@ body {
   background-color: #26abd4;
 }
 
+.found-message {
+  background-color: #f8d7da;
+  padding: 15px 10px;
+  border-radius: 7px;
+  font-size: 18px;
+  color: brown;
+}
+
+.search-text {
+  font-weight: 900;
+}
+
 @media only screen and (max-width: 576px) {
   .search-field {
     width: 100%;

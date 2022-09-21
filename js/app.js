@@ -22,12 +22,14 @@ const productCategory = (category_name) => {
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category_name}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => dsiplayFood(data.meals));
+    .then((data) => displayFood(data.meals));
 };
 
-const dsiplayFood = (foods) => {
+const displayFood = (foods) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
+
+  foods = foods.slice(0, 9);
 
   foods.forEach((food) => {
     const foodDetails = document.createElement("div");
@@ -69,17 +71,16 @@ const displaySearchResult = (meals) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
 
-  // meals = meals.slice(0, 9);
+  const foundMessages = document.getElementById("found-messages");
+  const searchText = document.getElementById("search-text");
 
-  // const foundMessages = document.getElementById("found-messages");
-
-  // console.log(meals);
-
-  // if (meals.length === 0) {
-  //   foundMessages.classList.remove("d-none");
-  // } else {
-  //   foundMessages.classList.add("d-none");
-  // }
+  if (meals === null) {
+    foundMessages.classList.remove("d-none");
+    const searchField = document.getElementById("search-field").value;
+    searchText.innerText = searchField;
+  } else {
+    foundMessages.classList.add("d-none");
+  }
 
   meals.forEach((meal) => {
     const foodDetails = document.createElement("div");
