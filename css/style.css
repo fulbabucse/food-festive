@@ -94,6 +94,15 @@ body {
   height: 400px;
 }
 
+.cart-items-messages {
+  font-size: 18px;
+  color: #fff;
+  background-color: rgb(290, 114, 36);
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 100px;
+}
+
 .cart {
   background: transparent;
   border: none;

@@ -68,6 +68,9 @@ const searchFoodApi = (mealName) => {
 const displaySearchResult = (meals) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
+
+  // meals = meals.slice(0, 9);
+
   // const foundMessages = document.getElementById("found-messages");
 
   // console.log(meals);
@@ -120,11 +123,17 @@ const cartFoods = (foodId) => {
     .then((res) => res.json())
     .then((data) => displayFoodCart(data.meals));
 
+  document.getElementById("cart-add-info").style.display = "block";
+
   const cartNumberEle = document.getElementById("cart-number");
   const cartNumberStr = cartNumberEle.innerText;
   const CartNumberInt = parseInt(cartNumberStr);
   const cartNumber = CartNumberInt + 1;
   cartNumberEle.innerText = cartNumber;
+
+  setTimeout(() => {
+    document.getElementById("cart-add-info").style.display = "none";
+  }, 2000);
 };
 
 const displayFoodCart = (foodCart) => {
