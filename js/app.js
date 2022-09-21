@@ -28,9 +28,6 @@ const productCategory = (category_name) => {
 const displayFood = (foods) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
-
-  foods = foods.slice(0, 9);
-
   foods.forEach((food) => {
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
@@ -113,9 +110,17 @@ const displaySearchResult = (meals) => {
 
 const searchButton = () => {
   const searchField = document.getElementById("search-field").value;
-
   searchFoodApi(searchField);
 };
+
+document
+  .getElementById("search-field")
+  .addEventListener("keypress", (pressed) => {
+    const searchField = document.getElementById("search-field").value;
+    if (pressed.key === "Enter") {
+      searchFoodApi(searchField);
+    }
+  });
 
 const cartFoods = (foodId) => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
