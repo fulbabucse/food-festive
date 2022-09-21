@@ -2,6 +2,16 @@
 body {
   font-family: "Hind Siliguri", sans-serif;
 }
+
+#pre-loader {
+  background: white url(../image/pre-loader.gif) no-repeat center;
+  background-size: 40%;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+}
+
 .brand-logo {
   width: 30px;
   height: 30px;

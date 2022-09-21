@@ -19,6 +19,8 @@
   </head>
 
   <body>
+    <div id="pre-loader"></div>
+
     <header class="container-fluid" style="background-color: #353537">
       <!-- NAVBAR -->
       <nav class="navbar navbar-expand-lg">
@@ -263,6 +265,11 @@
     </footer>
 
     <script>
+      const preLoader = document.getElementById("pre-loader");
+      window.addEventListener("load", function () {
+        preLoader.style.display = "none";
+      });
+
       const year = document.getElementById("year");
       year.innerText = new Date().getFullYear();
     </script>
