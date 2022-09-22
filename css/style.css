@@ -186,6 +186,10 @@ body {
   color: brown;
 }
 
+.found-items-messages {
+  display: none;
+}
+
 .search-text {
   font-weight: 900;
 }

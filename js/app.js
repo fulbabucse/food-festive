@@ -7,6 +7,7 @@ const loadData = () => {
 
 const displayData = (drinks) => {
   const category = document.getElementById("category");
+
   drinks.map((drink) => {
     const singleCategory = document.createElement("div");
     singleCategory.classList.add("category-container");
@@ -23,16 +24,24 @@ const productCategory = (category_name) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayFood(data.meals));
+
+  const select_ctg_name = document.getElementById("selected-items");
+  select_ctg_name.innerText = category_name;
 };
 
 const displayFood = (foods) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
 
+  const found_items = document.getElementById("found-items-messages");
+
   const foundMessages = document.getElementById("found-messages");
   if (foods.length > 0) {
+    found_items.classList.remove("d-none");
     foundMessages.classList.add("d-none");
   }
+
+  document.getElementById("items-number").innerText = foods.length;
 
   foods.forEach((food) => {
     const foodDetails = document.createElement("div");
@@ -73,14 +82,16 @@ const searchFoodApi = (mealName) => {
 const displaySearchResult = (meals) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
+  const found_items = document.getElementById("found-items-messages");
 
-  const foundMessages = document.getElementById("found-messages");
   const searchText = document.getElementById("search-text");
-
+  const foundMessages = document.getElementById("found-messages");
   if (meals === null) {
     foundMessages.classList.remove("d-none");
     const searchField = document.getElementById("search-field").value;
     searchText.innerText = searchField;
+
+    found_items.classList.add("d-none");
   } else {
     foundMessages.classList.add("d-none");
   }
