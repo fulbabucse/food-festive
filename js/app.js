@@ -28,6 +28,12 @@ const productCategory = (category_name) => {
 const displayFood = (foods) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
+
+  const foundMessages = document.getElementById("found-messages");
+  if (foods.length > 0) {
+    foundMessages.classList.add("d-none");
+  }
+
   foods.forEach((food) => {
     const foodDetails = document.createElement("div");
     foodDetails.classList.add("col");
