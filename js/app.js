@@ -82,18 +82,19 @@ const searchFoodApi = (mealName) => {
 const displaySearchResult = (meals) => {
   const seeResult = document.getElementById("see-result");
   seeResult.innerHTML = "";
-  const found_items = document.getElementById("found-items-messages");
 
+  const found_items = document.getElementById("found-items-messages");
   const searchText = document.getElementById("search-text");
   const foundMessages = document.getElementById("found-messages");
+
   if (meals === null) {
     foundMessages.classList.remove("d-none");
     const searchField = document.getElementById("search-field").value;
     searchText.innerText = searchField;
-
     found_items.classList.add("d-none");
   } else {
     foundMessages.classList.add("d-none");
+    found_items.classList.add("d-none");
   }
 
   meals.forEach((meal) => {
