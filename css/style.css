@@ -39,7 +39,7 @@ body {
   padding: 5px 20px;
   font-size: 18px;
   font-weight: 400;
-  width: 50%;
+  max-width: 60%;
   transition: 0.3s ease-in-out;
   border-radius: 0;
   border-bottom-left-radius: 20px;
@@ -47,7 +47,7 @@ body {
 }
 
 .search-field:focus {
-  width: 70%;
+  max-width: 80%;
   color: orange;
   border: 1px solid orange !important;
   box-shadow: none;
@@ -71,7 +71,13 @@ body {
   border: 1px solid black;
 }
 
+.food-card {
+  min-height: 375px;
+}
+
 .drink-card-img {
+  width: 100%;
+  height: 240px;
 }
 
 .category-container {
@@ -94,14 +100,12 @@ body {
   background-color: #7330f6;
   transition: 0.3s ease-in-out;
   border-radius: 10px;
+  position: sticky;
+  top: 85px;
 }
 .category {
   font-size: 18px;
   cursor: pointer;
-}
-
-.food-card {
-  height: 400px;
 }
 
 .cart-items-messages {
@@ -196,29 +200,80 @@ body {
 
 @media only screen and (max-width: 576px) {
   .search-field {
-    width: 100%;
+    max-width: 100%;
   }
   .search-field:focus {
+    max-width: 100%;
+  }
+
+  .drink-card-img {
     width: 100%;
+    height: 300px;
   }
   .food-card {
-    height: 520px;
+    min-height: 400px;
   }
   #category {
     margin-bottom: 30px;
   }
 }
 
-@media only screen and (min-width: 577px) and (max-width: 1024px) {
-  .search-field {
-    width: 60%;
-  }
-
-  .search-field:focus {
-    width: 80%;
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .food-card {
+    min-height: 350px;
   }
 
   #category {
     margin-bottom: 30px;
+  }
+
+  .drink-card-img {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  .food-card {
+    min-height: 400px;
+  }
+
+  #category {
+    margin-bottom: 30px;
+  }
+
+  .drink-card-img {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .food-card {
+    min-height: 375px;
+  }
+
+  #category {
+    margin-bottom: 30px;
+  }
+
+  .drink-card-img {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1400px) {
+  .food-card {
+    min-height: 375px;
+  }
+
+  #category {
+    margin-bottom: 30px;
+  }
+
+  .drink-card-img {
+    width: 100%;
+    height: 250px;
   }
 }

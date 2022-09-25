@@ -53,10 +53,10 @@ const displayFood = (foods) => {
             class="drink-card-img"
             alt="..."
         />
-        <div class="card-body">
+        <div class="card-body position-relative">
             <h5 class="card-title">${food.strMeal.slice(0, 40)}</h5>
-        </div>
-        <div class="card-footer d-flex justify-content-between">
+
+            <div class="card-footer d-flex justify-content-between w-100 position-absolute start-0 bottom-0">
             <button class="details-btn" onclick="foodDetails(${
               food.idMeal
             })" data-bs-toggle="modal"
@@ -65,6 +65,8 @@ const displayFood = (foods) => {
               food.idMeal
             })">Cart</button>
         </div>
+        </div>
+        
      </div>
     `;
     seeResult.appendChild(foodDetails);
@@ -107,10 +109,10 @@ const displaySearchResult = (meals) => {
             class="drink-card-img"
             alt="..."
         />
-        <div class="card-body">
+        <div class="card-body position-relative">
             <h5 class="card-title">${meal.strMeal.slice(0, 40)}</h5>
-        </div>
-        <div class="card-footer d-flex justify-content-between">
+
+            <div class="card-footer d-flex justify-content-between position-absolute w-100 start-0 bottom-0">
             <button class="details-btn" onclick="foodDetails(${
               meal.idMeal
             })" data-bs-toggle="modal"
@@ -120,6 +122,8 @@ const displaySearchResult = (meals) => {
             })">Cart</button>
             
         </div>
+        </div>
+        
      </div>
     `;
     seeResult.appendChild(foodDetails);
@@ -196,7 +200,7 @@ const displayFoodDetails = (foodDetails) => {
     }" class="food-details" alt="" srcset="" />
     <p class="mt-2"><strong>Instruction: </strong>${foodDetails[0].strInstructions.slice(
       0,
-      200
+      300
     )}</p>
     <a href="${
       foodDetails[0].strYoutube
@@ -218,3 +222,10 @@ const spinner = (isLoading) => {
 productCategory("Beef");
 
 loadData();
+
+// const cartNumber = parseInt(document.getElementById("cart-number").innerText);
+// JSON.stringify(localStorage.setItem("cart", cartNumber));
+// const previousCart = JSON.parse(localStorage.getItem("cart"));
+// cartNumber.innerText = previousCart;
+
+// console.log(cartNumber);
