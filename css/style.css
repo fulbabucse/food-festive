@@ -100,8 +100,6 @@ body {
   background-color: #7330f6;
   transition: 0.3s ease-in-out;
   border-radius: 10px;
-  position: sticky;
-  top: 85px;
 }
 .category {
   font-size: 18px;
@@ -255,6 +253,8 @@ body {
 
   #category {
     margin-bottom: 30px;
+    position: sticky;
+    top: 85px;
   }
 
   .drink-card-img {
@@ -270,6 +270,8 @@ body {
 
   #category {
     margin-bottom: 30px;
+    position: sticky;
+    top: 85px;
   }
 
   .drink-card-img {

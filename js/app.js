@@ -54,7 +54,7 @@ const displayFood = (foods) => {
             alt="..."
         />
         <div class="card-body position-relative">
-            <h5 class="card-title">${food.strMeal.slice(0, 40)}</h5>
+            <h5 class="card-title">${food.strMeal.slice(0, 36)}</h5>
 
             <div class="card-footer d-flex justify-content-between w-100 position-absolute start-0 bottom-0">
             <button class="details-btn" onclick="foodDetails(${
@@ -110,7 +110,7 @@ const displaySearchResult = (meals) => {
             alt="..."
         />
         <div class="card-body position-relative">
-            <h5 class="card-title">${meal.strMeal.slice(0, 40)}</h5>
+            <h5 class="card-title">${meal.strMeal.slice(0, 36)}</h5>
 
             <div class="card-footer d-flex justify-content-between position-absolute w-100 start-0 bottom-0">
             <button class="details-btn" onclick="foodDetails(${
